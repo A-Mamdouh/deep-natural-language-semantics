@@ -1,0 +1,122 @@
+{
+    "annotations": [
+        [
+            {
+                "sentence": "the lawyer asked the witness",
+                "subject": {
+                    "name": "the lawyer",
+                    "referent": null,
+                    "is_reference": false
+                },
+                "verb": "asked",
+                "object_": {
+                    "name": "the witness",
+                    "referent": null,
+                    "is_reference": false
+                },
+                "adjectives": [],
+                "is_negated": false,
+                "is_always": false
+            },
+            {
+                "sentence": "he answered the question reluctantly",
+                "subject": {
+                    "name": "he",
+                    "referent": "the witness",
+                    "is_reference": true
+                },
+                "verb": "answered",
+                "object_": {
+                    "name": "the question",
+                    "referent": null,
+                    "is_reference": false
+                },
+                "adjectives": [],
+                "is_negated": false,
+                "is_always": false,
+                "adverb": "reluctantly"
+            },
+            {
+                "sentence": "he was anxious",
+                "subject": {
+                    "name": "he",
+                    "referent": "the witness",
+                    "is_reference": true
+                },
+                "verb": "was",
+                "object_": null,
+                "adjectives": [
+                    [
+                        "anxious",
+                        {
+                            "name": "he",
+                            "referent": "the witness",
+                            "is_reference": true
+                        }
+                    ]
+                ],
+                "is_negated": false,
+                "is_always": false
+            }
+        ],
+        [
+            {
+                "sentence": "the lawyer asked the witness",
+                "subject": {
+                    "name": "the lawyer",
+                    "referent": null,
+                    "is_reference": false
+                },
+                "verb": "asked",
+                "object_": {
+                    "name": "the witness",
+                    "referent": null,
+                    "is_reference": false
+                },
+                "adjectives": [],
+                "is_negated": false,
+                "is_always": false
+            },
+            {
+                "sentence": "he repeated the question reluctantly",
+                "subject": {
+                    "name": "he",
+                    "referent": "the lawyer",
+                    "is_reference": true
+                },
+                "verb": "repeated",
+                "object_": {
+                    "name": "the question",
+                    "referent": null,
+                    "is_reference": false
+                },
+                "adjectives": [],
+                "is_negated": false,
+                "is_always": false,
+                "adverb": "reluctantly"
+            },
+            {
+                "sentence": "he was anxious",
+                "subject": {
+                    "name": "he",
+                    "referent": "the lawyer",
+                    "is_reference": true
+                },
+                "verb": "was",
+                "object_": null,
+                "adjectives": [
+                    [
+                        "anxious",
+                        {
+                            "name": "he",
+                            "referent": "the lawyer",
+                            "is_reference": true
+                        }
+                    ]
+                ],
+                "is_negated": false,
+                "is_always": false
+            }
+        ]
+    ]
+}

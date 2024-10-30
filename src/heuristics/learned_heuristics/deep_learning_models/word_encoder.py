@@ -17,6 +17,10 @@ class WordEncoder:  # pylint: disable=R0903:too-few-public-methods
         self.model.to(device)
         self.device: str = device
 
+    @property
+    def output_size(self) -> int:
+        return self.model.config.hidden_size
+
     def encode_word(self, word: str) -> torch.Tensor:
         """Return a tensor encoding of the input word"""
         tokens = self.tokenizer(word, return_tensors="pt", add_special_tokens=False)

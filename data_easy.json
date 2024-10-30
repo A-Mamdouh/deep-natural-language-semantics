@@ -2,15 +2,15 @@
     "annotations": [
         [
             {
-                "sentence": "Anna saw the dog",
+                "sentence": "Alex saw a dog",
                 "subject": {
-                    "name": "Anna",
+                    "name": "Alex",
                     "referent": null,
                     "is_reference": false
                 },
                 "verb": "saw",
                 "object_": {
-                    "name": "the dog",
+                    "name": "a dog",
                     "referent": null,
                     "is_reference": false
                 },
@@ -22,10 +22,42 @@
                 "sentence": "She smiled",
                 "subject": {
                     "name": "she",
-                    "referent": "Anna",
+                    "referent": "Alex",
                     "is_reference": true
                 },
                 "verb": "smiled",
+                "object_": null,
+                "adjectives": [],
+                "is_negated": false,
+                "is_always": false
+            }
+        ],
+        [
+            {
+                "sentence": "Alex saw a dog",
+                "subject": {
+                    "name": "Alex",
+                    "referent": null,
+                    "is_reference": false
+                },
+                "verb": "saw",
+                "object_": {
+                    "name": "a dog",
+                    "referent": null,
+                    "is_reference": false
+                },
+                "adjectives": [],
+                "is_negated": false,
+                "is_always": false
+            },
+            {
+                "sentence": "She barked",
+                "subject": {
+                    "name": "she",
+                    "referent": "the dog",
+                    "is_reference": true
+                },
+                "verb": "barked",
                 "object_": null,
                 "adjectives": [],
                 "is_negated": false,
@@ -66,6 +98,38 @@
         ],
         [
             {
+                "sentence": "Bob saw the dog",
+                "subject": {
+                    "name": "Bob",
+                    "referent": null,
+                    "is_reference": false
+                },
+                "verb": "saw",
+                "object_": {
+                    "name": "the dog",
+                    "referent": null,
+                    "is_reference": false
+                },
+                "adjectives": [],
+                "is_negated": false,
+                "is_always": false
+            },
+            {
+                "sentence": "He smiled",
+                "subject": {
+                    "name": "he",
+                    "referent": "Bob",
+                    "is_reference": true
+                },
+                "verb": "smiled",
+                "object_": null,
+                "adjectives": [],
+                "is_negated": false,
+                "is_always": false
+            }
+        ],
+        [
+            {
                 "sentence": "Alexa dropped the plate",
                 "subject": {
                     "name": "Alexa",
@@ -91,6 +155,42 @@
                 },
                 "verb": "broke",
                 "object_": null,
+                "adjectives": [],
+                "is_negated": false,
+                "is_always": false
+            }
+        ],
+        [
+            {
+                "sentence": "Alexa dropped the plate",
+                "subject": {
+                    "name": "Alexa",
+                    "referent": null,
+                    "is_reference": false
+                },
+                "verb": "dropped",
+                "object_": {
+                    "name": "the plate",
+                    "referent": null,
+                    "is_reference": false
+                },
+                "adjectives": [],
+                "is_negated": false,
+                "is_always": false
+            },
+            {
+                "sentence": "She broke it",
+                "subject": {
+                    "name": "She",
+                    "referent": "Alexa",
+                    "is_reference": true
+                },
+                "verb": "broke",
+                "object_": {
+                    "name": "it",
+                    "referent": "the place",
+                    "is_reference": true
+                },
                 "adjectives": [],
                 "is_negated": false,
                 "is_always": false
@@ -302,7 +402,7 @@
                 "is_always": false
             },
             {
-                "sentence": "It was fast",
+                "sentence": "It was slow",
                 "subject": {
                     "name": "it",
                     "referent": "the bike",
@@ -312,7 +412,7 @@
                 "object_": null,
                 "adjectives": [
                     [
-                        "fast",
+                        "slow",
                         {
                             "name": "It",
                             "referent": "the bike",
@@ -326,9 +426,9 @@
         ],
         [
             {
-                "sentence": "Teacher graded the test",
+                "sentence": "the Teacher graded the test",
                 "subject": {
-                    "name": "Teacher",
+                    "name": "the Teacher",
                     "referent": null,
                     "is_reference": false
                 },
