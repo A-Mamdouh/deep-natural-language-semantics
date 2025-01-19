@@ -1,4 +1,3 @@
-# %%
 from typing import List
 
 import matplotlib.pyplot as plt
@@ -23,7 +22,6 @@ from src.search.search_node import HeuristicTableauSearchNode
 torch.manual_seed(40)
 
 
-# %%
 def make_narrator() -> narration.Narrator:
     run = narration.Verb("run", "ran")
     sleep = narration.Verb("sleep", "slept")
@@ -42,17 +40,12 @@ def make_narrator() -> narration.Narrator:
     return narration.Narrator(story)
 
 
-narrator = make_narrator()
-
-
-# %%
 def get_target_models(
     agent: GreedyAgent, narrator: narration.Narrator
 ) -> List[HeuristicTableauSearchNode]:
     return list(agent.search(narrator.copy()))
 
 
-# %%
 def get_training_sequences(
     model: GRUModel | GRUModel2,
     solved_tree: List[HeuristicTableauSearchNode],
@@ -109,26 +102,6 @@ def get_training_sequences(
     return sequences, labels, weights
 
 
-gru_model = GRUModel2(
-    GRUModelConfig2(
-        gru_num_layers=3,
-        latent_size=256,
-        hidden_size=1024,
-        dropout=0.0,
-        bidirectional=False,
-    )
-)
-
-gru_agent = GreedyAgent(heuristic=gru_model)
-
-models = get_target_models(GreedyAgent(AverageSalience()), narrator)
-
-train_sequences, train_labels, weights = get_training_sequences(
-    gru_model, models, gru_model._cfg.device
-)
-
-
-# %%
 def train(
     model: GRUModel | GRUModel2,
     train_sequences,
@@ -156,35 +129,57 @@ def train(
     return loss_history
 
 
-loss_history = train(
-    gru_model, train_sequences, train_labels, weights, iters=200, lr=5e-4
-)
-plt.plot(loss_history)
-plt.show()
-
-# %%
-gru_model.eval()
-with torch.inference_mode():
-    trained_models = get_target_models(gru_agent, narrator)
-
-# %%
-with open("training_output", "w") as fp:
-    for model in trained_models:
-        print(
-            f"model @ {model.sentence_depth} - {model.priority[0,0]:.6f}: ",
-            *(
-                str(x)
-                for x in reversed(list(model.tableau.branch_formulas))
-                if x.annotation
-            ),
-            sep="\n ",
-            end="\n\n",
-            file=fp,
+def main():
+    narrator = make_narrator()
+    gru_model = GRUModel2(
+        GRUModelConfig2(
+            gru_num_layers=3,
+            latent_size=256,
+            hidden_size=1024,
+            dropout=0.0,
+            bidirectional=False,
         )
-        print(
-            "Entities:",
-            *(str(x) for x in reversed(list(model.tableau.branch_entities))),
-            sep="\n ",
-            file=fp,
-        )
-        print("-" * 30, file=fp)
+    )
+
+    gru_agent = GreedyAgent(heuristic=gru_model)
+
+    models = get_target_models(GreedyAgent(AverageSalience()), narrator)
+
+    train_sequences, train_labels, weights = get_training_sequences(
+        gru_model, models, gru_model._cfg.device
+    )
+
+    loss_history = train(
+        gru_model, train_sequences, train_labels, weights, iters=200, lr=5e-4
+    )
+    plt.plot(loss_history)
+    plt.show()
+
+    gru_model.eval()
+    with torch.inference_mode():
+        trained_models = get_target_models(gru_agent, narrator)
+
+    with open("training_output", "w") as fp:
+        for model in trained_models:
+            print(
+                f"model @ {model.sentence_depth} - {model.priority[0, 0]:.6f}: ",
+                *(
+                    str(x)
+                    for x in reversed(list(model.tableau.branch_formulas))
+                    if x.annotation
+                ),
+                sep="\n ",
+                end="\n\n",
+                file=fp,
+            )
+            print(
+                "Entities:",
+                *(str(x) for x in reversed(list(model.tableau.branch_entities))),
+                sep="\n ",
+                file=fp,
+            )
+            print("-" * 30, file=fp)
+
+
+if __name__ == "__main__":
+    main()
