@@ -188,7 +188,7 @@
                 "verb": "broke",
                 "object_": {
                     "name": "it",
-                    "referent": "the place",
+                    "referent": "the plate",
                     "is_reference": true
                 },
                 "adjectives": [],
